@@ -1,0 +1,7 @@
+'App\Entity\Event':
+    event_{1..100}:
+        name: <sentence()>
+        dateStartsAt: <dateTimeInInterval("-15days", "now")>
+        dateEndsAt: <dateTimeInInterval("now", "+15days")>
+        organizedBy: <company()>
+        location: <country()>

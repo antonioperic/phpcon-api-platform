@@ -29,7 +29,7 @@ class Event
      * @ORM\Column(type="datetime")
      * @Assert\NotBlank()
      */
-    private $dateStartAt;
+    private $dateStartsAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -64,14 +64,14 @@ class Event
         return $this;
     }
 
-    public function getDateStartAt(): ?\DateTimeInterface
+    public function getDateStartsAt(): ?\DateTimeInterface
     {
-        return $this->dateStartAt;
+        return $this->dateStartsAt;
     }
 
-    public function setDateStartAt(\DateTimeInterface $dateStartAt): self
+    public function setDateStartsAt(\DateTimeInterface $dateStartsAt): self
     {
-        $this->dateStartAt = $dateStartAt;
+        $this->dateStartsAt = $dateStartsAt;
 
         return $this;
     }
