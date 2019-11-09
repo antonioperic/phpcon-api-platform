@@ -1,6 +1,13 @@
 'App\Entity\Event':
-    event_{1..100}:
+    event_{1..99}:
         name: <sentence()>
+        dateStartsAt: <dateTimeInInterval("-15days", "now")>
+        dateEndsAt: <dateTimeInInterval("now", "+15days")>
+        organizedBy: <company()>
+        location: <country()>
+        
+    event_100:
+        name: 'Locastic API Platform Conference'
         dateStartsAt: <dateTimeInInterval("-15days", "now")>
         dateEndsAt: <dateTimeInInterval("now", "+15days")>
         organizedBy: <company()>

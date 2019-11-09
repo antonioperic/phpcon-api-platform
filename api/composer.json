@@ -12,7 +12,6 @@
         "symfony/dotenv": "4.3.*",
         "symfony/flex": "^1.1",
         "symfony/framework-bundle": "4.3.*",
-        "symfony/http-client": "4.3.*",
         "symfony/maker-bundle": "^1.14",
         "symfony/mercure-bundle": "^0.1.2",
         "symfony/yaml": "4.3.*"
@@ -20,7 +19,10 @@
     "require-dev": {
         "api-platform/schema-generator": "^2.1",
         "hautelook/alice-bundle": "^2.5",
-        "symfony/profiler-pack": "^1.0"
+        "justinrainbow/json-schema": "^5.2",
+        "symfony/http-client": "4.3.*",
+        "symfony/profiler-pack": "^1.0",
+        "symfony/test-pack": "^1.0"
     },
     "conflict": {
         "symfony/symfony": "*"
