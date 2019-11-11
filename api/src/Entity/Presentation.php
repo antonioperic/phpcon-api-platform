@@ -29,7 +29,7 @@ class Presentation
     private $startsAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Event")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="presentations")
      * @ORM\JoinColumn(nullable=false)
      */
     private $event;
