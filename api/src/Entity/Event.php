@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     normalizationContext={"groups"={"event:read"}},
  *     denormalizationContext={"groups"={"event:write"}},
  *     attributes={"filters"={"event.date_filter"}}
- *     )
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
  * @ApiFilter(SearchFilter::class, properties={"id": "exact", "name": "partial", "location": "partial", "organizedBy": "partial"})
  * @ApiFilter(OrderFilter::class, properties={"id", "name", "dateStartsAt"}, arguments={"orderParameterName"="order"})

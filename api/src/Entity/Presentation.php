@@ -4,9 +4,16 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(subresourceOperations={
+ *         "api_events_presentations_get_subresource"={
+ *             "method"="GET",
+ *             "normalization_context"={"groups"={"event:read:presentation"}}
+ *        }
+ *     }
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\PresentationRepository")
  */
 class Presentation
@@ -20,11 +27,13 @@ class Presentation
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"event:read:presentation"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="string")
+     * @Groups({"event:read:presentation"})
      */
     private $startsAt;
 
