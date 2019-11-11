@@ -5,11 +5,15 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"presentation:read"}},
  *     denormalizationContext={"groups"={"presentation:write"}},
+ *     attributes={"order"={"event", "startsAt"}},
  *     subresourceOperations={
  *         "api_events_presentations_get_subresource"={
  *             "method"="GET",
@@ -17,6 +21,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *        }
  *     }
  * )
+ * @ApiFilter(SearchFilter::class, properties={"event.name": "partial"})
+ * @ApiFilter(SearchFilter::class, properties={"title": "ipartial"})
+ * @ApiFilter(SearchFilter::class, properties={"title": "ipartial"})
+ * @ApiFilter(RangeFilter::class, properties={"averageRating"})
  * @ORM\Entity(repositoryClass="App\Repository\PresentationRepository")
  */
 class Presentation
