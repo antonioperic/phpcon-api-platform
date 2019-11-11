@@ -10,10 +10,15 @@ use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ApiResource(attributes={"filters"={"event.date_filter"}})
+ * @ApiResource(
+ *     normalizationContext={"groups"={"event:read"}},
+ *     denormalizationContext={"groups"={"event:write"}},
+ *     attributes={"filters"={"event.date_filter"}}
+ *     )
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
  * @ApiFilter(SearchFilter::class, properties={"id": "exact", "name": "partial", "location": "partial", "organizedBy": "partial"})
  * @ApiFilter(OrderFilter::class, properties={"id", "name", "dateStartsAt"}, arguments={"orderParameterName"="order"})
@@ -24,34 +29,40 @@ class Event
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("event:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
+     * @Groups({"event:read", "event:write"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="datetime")
      * @Assert\NotBlank()
+     * @Groups({"event:read", "event:write"})
      */
     private $dateStartsAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"event:read", "event:write"})
      */
     private $dateEndsAt;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
+     * @Groups({"event:read", "event:write"})
      */
     private $location;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"event:read", "event:write"})
      */
     private $organizedBy;
 
