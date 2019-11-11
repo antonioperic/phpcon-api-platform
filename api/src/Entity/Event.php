@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ApiResource()
+ * @ApiResource(attributes={"filters"={"event.date_filter"}})
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
  */
 class Event
