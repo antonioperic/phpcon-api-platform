@@ -7,7 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource(subresourceOperations={
+ * @ApiResource(
+ *     normalizationContext={"groups"={"presentation:read"}},
+ *     denormalizationContext={"groups"={"presentation:write"}},
+ *     subresourceOperations={
  *         "api_events_presentations_get_subresource"={
  *             "method"="GET",
  *             "normalization_context"={"groups"={"event:read:presentation"}}
@@ -27,24 +30,26 @@ class Presentation
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"event:read:presentation"})
+     * @Groups({"presentation:read", "presentation:write", "event:read:presentation"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="string")
-     * @Groups({"event:read:presentation"})
+     * @Groups({"presentation:read", "presentation:write", "event:read:presentation"})
      */
     private $startsAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="presentations")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"presentation:read", "presentation:write"})
      */
     private $event;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2)
+     * @Groups("presentation:read")
      */
     private $averageRating = 0;
 

@@ -36,7 +36,7 @@ class Event
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
-     * @Groups({"event:read", "event:write"})
+     * @Groups({"event:read", "event:write", "presentation:read"})
      */
     private $name;
 
