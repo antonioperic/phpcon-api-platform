@@ -3,12 +3,17 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(attributes={"filters"={"event.date_filter"}})
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
+ * @ApiFilter(SearchFilter::class, properties={"id": "exact", "name": "partial", "location": "partial", "organizedBy": "partial"})
+ * @ApiFilter(OrderFilter::class, properties={"id", "name", "dateStartsAt"}, arguments={"orderParameterName"="order"})
  */
 class Event
 {
