@@ -1,0 +1,5 @@
+'App\Entity\Presentation':
+    presentation_{1..350}:
+        title: <sentence()>
+        startsAt: <time('H:i')>
+        event: '@event_*'
